@@ -25,7 +25,7 @@ def create_model(data):
     #Evaluate Model 
     y_pred = model.predict(X_test)
     print(f'Model Accuracy Score: {accuracy_score(y_test, y_pred)}')
-    print(f'Classification Report: {classification_report(y_test, y_pred)}')
+    print(f'\nClassification Report:\n{classification_report(y_test, y_pred)}')
 
     return model
 

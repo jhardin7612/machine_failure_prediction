@@ -54,9 +54,9 @@ def add_predictions(input_data):
 
     st.header("Current Prediction Status")
     if pred_results[0] == 0:
-        st.write("Non-Failure")
+        st.success("Non-Failure")
     else:
-        st.write("Fail")
+        st.error("Fail")
     
     st.write("Probability of Failure: ", model.predict_proba(input_array)[0][1])
 
