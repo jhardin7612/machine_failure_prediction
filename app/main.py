@@ -6,20 +6,16 @@ import numpy as np
 def get_clean_data():
 
     data = pd.read_csv('../data/data.csv')
+    df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
-    return data
+    return df
 
 #Labels needed for metrics and sliders
 labels = [
-        ("Footfall", "footfall"),
-        ("Temperature Mode", "tempMode"), 
         ("Air Quality", "AQ"),
         ("Ultrasonic Sensor", "USS"), 
         ("Current Sensor", "CS"), 
         ("Volatile Organic Compound Level", "VOC"),
-        ("Rotational Position", "RP"),
-        ("Input Pressure", "IP"),
-        ("Operating Temperature", "Temperature")
     ]
 
 def create_sidebar(labels):
@@ -70,25 +66,18 @@ def main():
 
     with  st.container():
         st.title("Machine Failure Predictor")
-        st.write("Currently this app should only be used for mission planning. Manually update individual sensor data to receive failure prediction results.")
+        st.write("Manually update the parameters on the left to receive new failure prediction results.")
 
     st.divider()
 
     with st.container():
-        col1, col2, col3 = st.columns(3, gap="large")
+        col1, col2, col3, col4 = st.columns(4, gap="large")
         
-        #Display Metrics in Grid-like pattern
-        col1.metric(labels[8][0], input_vals[labels[8][1]]) #Footfall
-        col1.metric(labels[1][0], input_vals[labels[1][1]]) #Temp Mode
-        col1.metric(labels[2][0], input_vals[labels[2][1]]) # Air Quality
-
-        col2.metric(labels[3][0], input_vals[labels[3][1]]) #UltraSonic
-        col2.metric(labels[4][0], input_vals[labels[4][1]]) #Current Sensor
-        col2.metric(labels[5][0], input_vals[labels[5][1]]) #VOC
-
-        col3.metric(labels[6][0], input_vals[labels[6][1]]) #Rotational Position
-        col3.metric(labels[7][0], input_vals[labels[7][1]]) #Input Pressure
-        col3.metric(labels[0][0], input_vals[labels[0][1]]) #Temperature
+        #Display Metrics 
+        col1.metric(labels[0][0], input_vals[labels[0][1]]) #Air Quality
+        col2.metric(labels[1][0], input_vals[labels[1][1]]) #Ultra Sonic
+        col3.metric(labels[2][0], input_vals[labels[2][1]]) #Current Sensor
+        col4.metric(labels[3][0], input_vals[labels[3][1]]) #VOC
 
     st.divider()
 

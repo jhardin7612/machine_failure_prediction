@@ -50,7 +50,9 @@ According to Kaggle, this dataset contains sensor data collected from various ma
 ## EDA
 During my initial exploration, I created a couple quick graphs to help visualize  distribution and correlation. The first graph I made was a simple pair plot that I ended up downsizing to the features with the highest correlation values.  The pair plot allows us to easily the distributions and where the failures tend to lie as the values for the features change. There seems to be a distinct line  at 3 that divides the volatile organic compound(VOC) levels in relation to failure. Without further analysis it would be easy to suggest to keep the VOC levels below 3. Later we will explore the significance of this feature in predicting failure. ![pair plot](images/mini_pairplot.png)
 
-The correlation heat map confirmed my suspicions about VOC levels being positively correlated with failure. It was also interesting to see that air quality and VOC were correlated as well. ![correlation heatmap](images/correlation_heatmap.png)
+The correlation heat map confirmed my suspicions about VOC levels being positively correlated with failure. It was also interesting to see that air quality and VOC were correlated as well. 
+
+![correlation heatmap](images/correlation_heatmap.png)
 
 ## Hypothesis Testing
 
@@ -61,6 +63,7 @@ Null Hypothesis: VOC is not a significant feature for predicting failure
 Alternative: There is a significant difference in prediction when using VOC feature.
 
 **Results:** VOC has a p-value of 0.00 and a standard error of 0.092. According the summary results this is not only a significant feature it is the most significant. Three other features were also identified as significant. These four features will be used to build the prediction model. 
+
 ![Logit Regression Results Summary Table](images/logit_regression_summary.png)
 
 ## Predicting Machine Failure
