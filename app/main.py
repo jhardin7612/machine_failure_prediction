@@ -51,7 +51,6 @@ def add_predictions(input_data):
     pred_results = model.predict(input_array)
 
     #Update Prediction Display Dynamically
-
     st.header("Current Prediction Status")
     if pred_results[0] == 0:
         st.success("Non-Failure")

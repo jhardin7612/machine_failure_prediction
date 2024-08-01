@@ -3,34 +3,39 @@
 ## Project Overview
 This project explores one of [Kaggle’s public datasets](https://www.kaggle.com/datasets/umerrtx/machine-failure-prediction-using-sensor-data) that contains sensor data collected from various machines as well as if those machines failed or not. I wanted to explore each of the features to see if I would be able to identify any significant correlations, patterns as well as use those features to predict machine failure. 
 
-## Installation Instructions
+## Installation and Setup
 
-Fork and Clone the [repository](https://github.com/jhardin7612/machine_failure_prediction) to your local machine. Please note this project was coded and tested using python version 3.11.7. 
+Fork and Clone the [repository](https://github.com/jhardin7612/machine_failure_prediction) to your local machine. 
 
-Required Libraries:
+_Please note this project was coded and tested using python version 3.11.7._
+
+**Required Libraries:**
 1. Pandas
 2. Numpy
 3. Streamlit
 4. Pickle
-5. sklearn.model_selection
-6. sklearn.linear_model
-7. sklearn.metrics
+5. matplotlib.pyplot
+6. Seaborn
+7. sklearn.model_selection
+8. sklearn.linear_model
+9. sklearn.metrics
+10. sklearn.preprocessing 
 
-To run the streamlitt application from your local machine, you will need to run the following command from inside the app directory :
+To run the streamlit application from your local machine, you will need to run the following command from inside the app directory :
 ```python
 streamlit run app.py
 ```
 The application is also accessible via this [link]
 
-To run the model and generate the classifiaction report, you will need to run this command from inside of the model directory:
+To run the model and generate the classification report, you will need to run this command from inside of the model directory:
 ```python
 python main.py
 ```
 
 ## Dataset Overview
-According to Kaggle, this dataset contains sensor data collected from various machines. The site does not specify what type of machines or where the data actually originates from. The dataset contains 944 rows and 10 columns. For this specific project the fail column is the target, leaving nine features to explore. A description of each of the columns are below. 
+According to Kaggle, this dataset contains sensor data collected from various machines. The site does not specify what type of machines or where the data actually originates from. The dataset contains 944 rows and 10 columns. For this specific project the fail column is the target, leaving nine features to explore. The dataset did not require any preprocessing steps as it was already very clean and did not contain any missing values or outliers. 
 
-### Columns Description
+### Column Description
 - footfall: The number of people or objects passing by the machine.
 - tempMode: The temperature mode or setting of the machine.
 - AQ: Air quality index near the machine.
@@ -49,7 +54,7 @@ The correlation heat map confirmed my suspicions about VOC levels being positive
 
 ## Hypothesis Testing
 
-After reviewing the graphs, I decided to head directly into my hypothesis testing. 
+After reviewing the graphs, I decided to head directly into my hypothesis testing. First I wanted to look to see if both 
 
 Null Hypothesis:
 
@@ -58,8 +63,9 @@ Alternative:
 Results:
 
 Conclusion:
+![Logit Regression Results Summary Table](images/logit_regression_summary.png)
 
 ## Predicting Machine Failure
-For failure prediction, I used a simple logistic regression model. The model was trained on 80% of the dataset. The model currently sits at a 91% accuracy rate. There is a screenshot of the model’s classification report to view the other metrics provided below.Down the line, I would like to gain access to a lrger dataset to see if that would improve evaluation metrics. I would also like to compare other models to this one.
+For failure prediction, I used a simple logistic regression model. The model was trained on 80% of the dataset. The model currently sits at a 90% accuracy rate. There is a screenshot of the model’s classification report to view the other metrics provided below.Down the line, I would like to gain access to a larger dataset to see if that would improve evaluation metrics. I would also like to compare other models to this one.
 
 ![Classification Report](images/classification_report.png)
