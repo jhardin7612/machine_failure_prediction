@@ -3,22 +3,29 @@ import pickle as pickle
 import pandas as pd
 import numpy as np
 
-def get_clean_data():
-
+def get_clean_data()-> pd.DataFrame:
+    """
+    Load data and perform transformations
+    Returns: Pandas DataFrame
+    """
     data = pd.read_csv('../data/data.csv')
     df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
     return df
 
 #Labels needed for metrics and sliders
-labels = [
+labels:list[tuple] = [
         ("Air Quality", "AQ"),
         ("Ultrasonic Sensor", "USS"), 
         ("Current Sensor", "CS"), 
         ("Volatile Organic Compound Level", "VOC"),
     ]
 
-def create_sidebar(labels):
+def create_sidebar(labels: list[tuple]) -> dict:
+    """
+    Creates the sidebar to collect user input
+    Returns: Dictionary with user input values
+    """
     st.sidebar.header("Machine Parameters")
 
     data = get_clean_data()
@@ -35,16 +42,23 @@ def create_sidebar(labels):
     return user_input
         
 
-def add_predictions(input_data):
+def add_predictions(input_data:dict):
+    """
+    Calculates machine failure based on values given by user.
+    Updates GUI in near-real time
+    Returns: None
+    """
 
-    #Import and load model
+    #Import/load model and scaler
     model = pickle.load(open("../model/model.pkl", "rb"))
+    scaler = pickle.load(open("../model/scaler.pkl", "rb"))
 
-    #Convert dictionary --> numpy array --> numpy Series
+    #Convert dictionary --> numpy array --> numpy Series then scale
     input_array = np.array(list(input_data.values())).reshape(1,-1)
-    
+    input_array_scaled = scaler.transform(input_array)
+
     #Get Prediction
-    pred_results = model.predict(input_array)
+    pred_results = model.predict(input_array_scaled)
 
     #Update Prediction Display Dynamically
     st.header("Current Prediction Status")
@@ -56,6 +70,10 @@ def add_predictions(input_data):
     st.write("Probability of Failure: ", model.predict_proba(input_array)[0][1])
 
 def main():
+    """
+    Displays all visuals for App
+    """
+    
     st.set_page_config(
         page_title = "Machine Status Predictor",
         page_icon=":computer",
@@ -71,9 +89,10 @@ def main():
     st.divider()
 
     with st.container():
+        #Create Columns
         col1, col2, col3, col4 = st.columns(4, gap="large")
         
-        #Display Metrics 
+        #Display Metrics in Columns
         col1.metric(labels[0][0], input_vals[labels[0][1]]) #Air Quality
         col2.metric(labels[1][0], input_vals[labels[1][1]]) #Ultra Sonic
         col3.metric(labels[2][0], input_vals[labels[2][1]]) #Current Sensor
