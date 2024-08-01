@@ -9,8 +9,9 @@ import pickle as pickle
 def get_clean_data():
 
     data = pd.read_csv('../data/data.csv')
+    df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
-    return data
+    return df
 
 def create_model(data):
     #Split Feature Variables from Target Variables

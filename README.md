@@ -54,18 +54,16 @@ The correlation heat map confirmed my suspicions about VOC levels being positive
 
 ## Hypothesis Testing
 
-After reviewing the graphs, I decided to head directly into my hypothesis testing. First I wanted to look to see if both 
+After reviewing the graphs, I decided to head directly into my hypothesis testing. 
 
-Null Hypothesis:
+Null Hypothesis: VOC is not a significant feature for predicting failure
 
-Alternative:
+Alternative: There is a significant difference in prediction when using VOC feature.
 
-Results:
-
-Conclusion:
+**Results:** VOC has a p-value of 0.00 and a standard error of 0.092. According the summary results this is not only a significant feature it is the most significant. Three other features were also identified as significant. These four features will be used to build the prediction model. 
 ![Logit Regression Results Summary Table](images/logit_regression_summary.png)
 
 ## Predicting Machine Failure
-For failure prediction, I used a simple logistic regression model. The model was trained on 80% of the dataset. The model currently sits at a 90% accuracy rate. There is a screenshot of the model’s classification report to view the other metrics provided below.Down the line, I would like to gain access to a larger dataset to see if that would improve evaluation metrics. I would also like to compare other models to this one.
+For failure prediction, I used a simple logistic regression model and standard scaler to fit and transform the data.  The model was trained on 80% of the dataset. The model currently sits at a 91% accuracy rate. The model only takes in the four significant features identified from my hypothesis testing. The model performs 1% less when it tries to account for all 9 of the features. There is a screenshot of the model’s classification report to view the other metrics provided below. Down the line, I would like to gain access to a larger dataset to see if that would improve evaluation metrics. I would also like to compare other models to this one.
 
 ![Classification Report](images/classification_report.png)
