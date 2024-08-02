@@ -52,8 +52,8 @@ def add_predictions(input_data:dict):
     """
 
     #Import/load model and scaler
-    model = pickle.load(open("../model/model.pkl", "rb"))
-    scaler = pickle.load(open("../model/scaler.pkl", "rb"))
+    model = pickle.load(open("model/model.pkl", "rb"))
+    scaler = pickle.load(open("model/scaler.pkl", "rb"))
 
     #Convert dictionary --> numpy array --> numpy Series then scale
     input_array = np.array(list(input_data.values())).reshape(1,-1)
