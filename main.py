@@ -2,15 +2,15 @@ import streamlit as st
 import pickle as pickle
 import pandas as pd
 import numpy as np
-import sys
-sys.path.insert(0,'.')
+# import sys
+# sys.path.insert(0,'.')
 
 def get_clean_data()-> pd.DataFrame:
     """
     Load data and perform transformations
     Returns: Pandas DataFrame
     """
-    data = pd.read_csv('../data/data.csv')
+    data = pd.read_csv('data/data.csv')
     df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
     return df
