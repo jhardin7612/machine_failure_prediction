@@ -3,7 +3,7 @@ import pickle as pickle
 import pandas as pd
 import numpy as np
 import sys
-sys.path.insert(0,'.')
+sys.path.insert(0,'..')
 
 def get_clean_data()-> pd.DataFrame:
     """
