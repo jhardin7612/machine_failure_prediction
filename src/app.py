@@ -2,15 +2,15 @@ import streamlit as st
 import pickle as pickle
 import pandas as pd
 import numpy as np
-# import sys
-# sys.path.insert(0,'.')
+import sys
+sys.path.insert(0,'.')
 
 def get_clean_data()-> pd.DataFrame:
     """
     Load data and perform transformations
     Returns: Pandas DataFrame
     """
-    data = pd.read_csv('data/data.csv')
+    data = pd.read_csv('../data/data.csv')
     df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
     return df
@@ -52,8 +52,8 @@ def add_predictions(input_data:dict):
     """
 
     #Import/load model and scaler
-    model = pickle.load(open("model/model.pkl", "rb"))
-    scaler = pickle.load(open("model/scaler.pkl", "rb"))
+    model = pickle.load(open("../model/model.pkl", "rb"))
+    scaler = pickle.load(open("../model/scaler.pkl", "rb"))
 
     #Convert dictionary --> numpy array --> numpy Series then scale
     input_array = np.array(list(input_data.values())).reshape(1,-1)
