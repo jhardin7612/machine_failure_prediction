@@ -5,8 +5,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler
 import pickle as pickle
-import sys
-sys.path.insert(0,'..')
 
 def get_clean_data():
 
