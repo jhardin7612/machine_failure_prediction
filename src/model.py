@@ -8,7 +8,7 @@ import pickle as pickle
 
 def get_clean_data():
 
-    data = pd.read_csv('../data/data.csv')
+    data = pd.read_csv('./data/data.csv')
     df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
 
     return df
@@ -48,10 +48,10 @@ def main():
     model, scaler = create_model(data)
 
     #Export Model and Scaler for Future use
-    with open('../model/model.pkl', 'wb') as f:
+    with open('./model/model.pkl', 'wb') as f:
         pickle.dump(model, f)
     
-    with open('../model/scaler.pkl', 'wb') as f:
+    with open('./model/scaler.pkl', 'wb') as f:
         pickle.dump(scaler, f)
 
 
