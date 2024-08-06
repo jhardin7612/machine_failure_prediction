@@ -48,7 +48,7 @@ According to Kaggle, this dataset contains sensor data collected from various ma
 - fail: Binary indicator of machine failure (1 for failure, 0 for no failure).
 
 ## EDA
-During my initial exploration, I created a couple quick graphs to help visualize  distribution and correlation. The first graph I made was a simple pair plot that I ended up downsizing to the features with the highest correlation values.  The pair plot allows us to easily the distributions and where the failures tend to lie as the values for the features change. There seems to be a distinct line  at 3 that divides the volatile organic compound(VOC) levels in relation to failure. Without further analysis it would be easy to suggest to keep the VOC levels below 3. Later we will explore the significance of this feature in predicting failure. ![pair plot](images/mini_pairplot.png)
+During my initial exploration, I created a couple quick graphs to help visualize  distribution and correlation. The first graph I made was a simple pair plot that I ended up downsizing to the features with the highest correlation values.  The pair plot allows us to easily the distributions and where the failures tend to lie as the values for the features change. There seems to be a distinct line  at 3 that divides the volatile organic compound(VOC) levels in relation to failure. Without further analysis it would be easy to suggest to keep the VOC levels below 3. Later we will explore the significance of this feature in predicting failure. ![pair plot](![pair plot](images/mini_pairplot.png)
 
 The correlation heat map confirmed my suspicions about VOC levels being positively correlated with failure. It was also interesting to see that air quality and VOC were correlated as well. 
 
