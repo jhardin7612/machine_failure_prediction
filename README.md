@@ -20,13 +20,13 @@ _Please note this project was coded and tested using python version 3.11.7._
 8. sklearn.linear_model
 9. sklearn.metrics
 10. sklearn.preprocessing 
-11.argparse
+11. argparse
 
 To run the streamlit application from your local machine, you will need to run the following command from root directory :
 ```python
 streamlit run app.py
 ```
-The application is also accessible via this [link]
+The application is also accessible via this [link](https://jhardin7612-machine-failure-prediction-app-ufloev.streamlit.app/)
 
 To run the model on the training data and receive classification report, you will need to run this command from root directory:
 ```python
