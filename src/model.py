@@ -7,7 +7,13 @@ from sklearn.preprocessing import StandardScaler
 import pickle as pickle
 import argparse
 
-def get_clean_data():
+def get_clean_data()-> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Loads data into a pandas DataFrame.
+    
+    Returns:
+        X: pandas DataFrame with only features
+        y: pandas DataFrame with only target
+    """
 
     data = pd.read_csv('./data/data.csv')
     df = data[['AQ', 'USS', 'CS', 'VOC', 'fail']]
@@ -18,7 +24,17 @@ def get_clean_data():
 
     return X, y
 
-def train_eval_model(X,y, train_full_data):
+def train_eval_model(X:pd.DataFrame,y:pd.DataFrame, train_full_data:bool):
+    """Builds and trains model on training data or full dataset.
+    Parameters:
+        X: pandas DataFrame containing only features
+        y: pandas DataFrame containing only the target
+        train_full_data: boolean to specify if training on full dataset or subset
+    Returns:
+        model: logistic regression model used 
+        scaler: Standard Scaler model used on training data
+    
+    """
     scaler = StandardScaler()
     model = LogisticRegression(random_state=14)
 
